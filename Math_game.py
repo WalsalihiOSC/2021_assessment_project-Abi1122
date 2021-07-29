@@ -1,6 +1,6 @@
 from tkinter import *
 from typing import Sized
-
+from game_info import player_in
 ## linking student class to the main code
 
 class Mathgame :
@@ -9,12 +9,27 @@ class Mathgame :
         self.welcome_frame = Frame(root,width="700",height="500") ## sets the size of the frame and creating the frame
         self.welcome_frame.grid() ## using .grid to position everything in to place.
 
-        ## creating the basic button and label of design 
-
         ## creating all the label/ titles for the front page.
         Label(self.welcome_frame,text="SHEEEH").grid(column=3,row=1)
         Label(self.welcome_frame,text="Name :").grid(column=2, row=3)
         Label(self.welcome_frame,text="Year :").grid(column=2, row=4)
+
+        ## creating all the entries and buttons to allow the user to input information.
+        self.player_name= Entry(self.welcome_frame)
+        self.player_name.grid(column=4, row=3)
+        self.year_level = Entry(self.welcome_frame)
+        self.year_level.grid(column=4, row=4)
+
+        Button(self.welcome_frame, text="Continue").grid(column=7, row=8)
+
+        Button(self.welcome_frame, text="Easy").grid(column=2, row=5) 
+        Button(self.welcome_frame, text="Medium").grid(column=3, row=5)
+        Button(self.welcome_frame, text="Hard").grid(column=4, row=5) 
+
+        Button(self.welcome_frame, text="Add").grid(column=2, row=6) 
+        Button(self.welcome_frame, text="Subtract").grid(column=3, row=6)
+        Button(self.welcome_frame, text="Multiple").grid(column=4, row=6)
+
         
 
     

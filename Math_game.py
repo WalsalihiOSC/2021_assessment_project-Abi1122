@@ -20,7 +20,7 @@ class Mathgame :
         self.year_level = Entry(self.welcome_frame)
         self.year_level.grid(column=4, row=4)
 
-        Button(self.welcome_frame, text="Continue").grid(column=7, row=8)
+        Button(self.welcome_frame, text="Continue", command=self.how_to).grid(column=7, row=8)
 
         Button(self.welcome_frame, text="Easy").grid(column=2, row=5) 
         Button(self.welcome_frame, text="Medium").grid(column=3, row=5)
@@ -30,7 +30,23 @@ class Mathgame :
         Button(self.welcome_frame, text="Subtract").grid(column=3, row=6)
         Button(self.welcome_frame, text="Multiple").grid(column=4, row=6)
 
+    def how_to(self):
+        ##creating help page
+        self.welcome_frame.grid_forget() ## hiding the previous frame to create the next one.
+        self.howto = Frame(root,width="700",height="500") ## sets the size of the frame and creating the frame
+        self.howto.grid() ## using .grid to position everything in to place.
+
+        ## Creating all the text and titles.
+        Label(self.howto, text="How To Play" ).grid(column=3 , row=1)
+        Label(self.howto, text=" You will get question like “2 + 2 ”.").grid(column=3, row= 3)
+        Label(self.howto, text=" Then beside it will be a box please press it").grid(column=3, row= 4)
+        Label(self.howto, text=" And type your answer.").grid(column=3, row= 5)
+
+        Label(self.howto, text="").grid(column=1, row= 2)
         
+        ##creating the buttons.
+        Button(self.howto, text="Continue", command=self.how_to).grid(column=7, row=8)
+
 
     
 

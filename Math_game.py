@@ -45,10 +45,26 @@ class Mathgame :
         Label(self.howto, text="").grid(column=1, row= 2)
         
         ##creating the buttons.
-        Button(self.howto, text="Continue", command=self.how_to).grid(column=7, row=8)
+        Button(self.howto, text="Continue", command=self.game).grid(column=7, row=8)
 
 
-    
+    def game(self):
+        ##creating the game page and deleting the other and sending the information to the other class to be stored
+
+        ## sending the data to class Player_in
+        Pn = self.player_name.get()
+        yl = self.year_level.get()
+        self.students = player_in(Pn,yl)
+        
+        ## deleting the unnessariary frames and creating the new frame.
+        self.welcome_frame.grid_remove()
+        self.howto.grid_remove()
+        self.game_page = Frame(root,width="700", height="500")
+        self.game_page.grid()
+
+        Label(self.game_page, text="helo").grid(column=1, row=1)
+
+
 
     def backb(self, pframe, cframe):
         ## function allows to go back to the preivous frame.

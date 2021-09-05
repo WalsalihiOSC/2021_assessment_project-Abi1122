@@ -1,14 +1,18 @@
 from tkinter import *
+import random
+import operator
 from typing import Sized
 from game_info import player_in
 ## linking student class to the main code
 
+
 class Mathgame :
     ## this intial windows start he program
     def __init__(self):
+        self.subch = 0
         self.welcome_frame = Frame(root,width="700",height="500") ## sets the size of the frame and creating the frame
         self.welcome_frame.grid() ## using .grid to position everything in to place.
-
+        
         ## creating all the label/ titles for the front page.
         Label(self.welcome_frame,text="SHEEEH").grid(column=3,row=1)
         Label(self.welcome_frame,text="Name :").grid(column=2, row=3)
@@ -19,22 +23,24 @@ class Mathgame :
         self.player_name.grid(column=4, row=3)
         self.year_level = Entry(self.welcome_frame)
         self.year_level.grid(column=4, row=4)
-
+        self. nb=0
         Button(self.welcome_frame, text="Continue", command=self.how_to).grid(column=7, row=8)
 
         Button(self.welcome_frame, text="Easy").grid(column=2, row=5) 
         Button(self.welcome_frame, text="Medium").grid(column=3, row=5)
         Button(self.welcome_frame, text="Hard").grid(column=4, row=5) 
 
-        Button(self.welcome_frame, text="Add").grid(column=2, row=6) 
+        
+        Button(self.welcome_frame, text="Add", command= self.add).grid(column=2, row=6) 
         Button(self.welcome_frame, text="Subtract").grid(column=3, row=6)
         Button(self.welcome_frame, text="Multiple").grid(column=4, row=6)
-
+      
     def how_to(self):
         ##creating help page
         self.welcome_frame.grid_forget() ## hiding the previous frame to create the next one.
         self.howto = Frame(root,width="700",height="500") ## sets the size of the frame and creating the frame
-        self.howto.grid() ## using .grid to position everything in to place.
+        self.howto.grid() ## using .grid to position everything in to place
+        
 
         ## Creating all the text and titles.
         Label(self.howto, text="How To Play" ).grid(column=3 , row=1)
@@ -52,9 +58,9 @@ class Mathgame :
         ##creating the game page and deleting the other and sending the information to the other class to be stored
 
         ## sending the data to class Player_in
-        Pn = self.player_name.get()
+        pn = self.player_name.get()
         yl = self.year_level.get()
-        self.students = player_in(Pn,yl)
+        self.students = player_in(pn,yl)
         
         ## deleting the unnessariary frames and creating the new frame.
         self.welcome_frame.grid_remove()
@@ -63,6 +69,14 @@ class Mathgame :
         self.game_page.grid()
 
         Label(self.game_page, text="helo").grid(column=1, row=1)
+
+    def add(self):
+        nb = 1
+        self.students = player_in(nb)
+        print(nb)
+
+    def randomquestion(self):
+        print(self.subch)
 
 
 
